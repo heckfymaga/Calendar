@@ -1,0 +1,10 @@
+<%= form_for @category do |f|%>
+    <div class="new_task">
+      <%= f.text_field :name, placeholder: 'Новая категория', class: 'form-control'%>
+    </div>
+    <div class="new_task">
+      <%= f.submit 'Сохранить', class: 'btn btn-sm btn-info ' %>
+      <%= link_to 'Назад', :back, class: 'btn btn-sm btn-secondary'%>
+    </div>
+<% end %>
+

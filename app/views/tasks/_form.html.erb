@@ -1,0 +1,24 @@
+<% if @task.errors.any? %>
+    <div class="alert alert-danger">
+      <ul>
+        <% @task.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+<% end %>
+<%= form_for (@task), url: day_tasks_path(@date), html: { method: :post } do |f| %>
+    <div class="new_task">
+      <%= f.text_field :target, placeholder: 'Новая задача', class: 'form-control'%>
+    </div>
+    <div class="new_task">
+      <%= f.collection_select :category_id, current_user.categories.order(:name), :id, :name, {include_blank: true}, class: 'form-control'%>
+    </div>
+    <div class="new_task">
+      <%= f.collection_select :frequency_id, TaskFrequency.all, :id, :frequency, class: 'form-control'%>
+    </div>
+    <div class="new_task">
+      <%= f.submit 'Сохранить', class: 'btn btn-sm btn-info ' %>
+      <%= link_to 'Назад', :back, class: 'btn btn-sm btn-secondary'%>
+    </div>
+<% end %>

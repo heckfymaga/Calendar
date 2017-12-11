@@ -1,0 +1,38 @@
+<div class="wrap">
+  <div class="tasks">
+    <% if @tasks.present? %>
+        <% @tasks.each do |task| %>
+            <div class="row">
+              <div class="complete">
+                <%= link_to complete_day_task_path(@date, task['id']), method: :post do %>
+                  <i style="opacity: 0.4;" class="fa fa-check"></i>
+                <% end %>
+              </div>
+              <% if ActiveTask.where(task_id: task['id'], date: @date).exists? %>
+                  <div class="task" style="opacity: 0.4;">
+                    <strike><%= task['target'] %></strike>
+                  </div>
+              <% else %>
+                  <div class="task">
+                    <%= task['target'] %>
+                  </div>
+              <% end %>
+              <div class="trash">
+                <%= link_to day_task_path(task['id'], @date), method: :delete do %>
+                  <i class="fa fa-trash"></i>
+                <% end %>
+              </div>
+            </div>
+        <% end %>
+    <% else %>
+      <div class="tasks_blank">
+        Добавьте новое задание
+      </div>
+    <% end %>
+  </div>
+  <div class="add_task">
+    <%= link_to new_day_task_path(@date) do %>
+        <i class="fa fa-plus-circle fa-2x" aria-hidden="true"></i>
+    <% end %>
+  </div>
+</div>

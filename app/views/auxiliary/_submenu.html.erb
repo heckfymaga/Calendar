@@ -1,0 +1,9 @@
+<div class="sub_menu">
+  <li class="sub_menu_top">Категории</li>
+  <% if user_signed_in? %>
+      <% current_user.categories.order(:name).each do |category| %>
+          <li><%= link_to category.name,category_path(category), class: 'sub_menu_link' %></li>
+      <% end %>
+  <% end %>
+</div>
+

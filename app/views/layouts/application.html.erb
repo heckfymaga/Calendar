@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>MyTasks</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+  <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+</head>
+<body>
+  <div class="container">
+    <nav class="navbar navbar-expand-lg navbar-light">
+      <a class="navbar-brand" href="<%= days_path %>">Календарь</a>
+      <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+        <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+          <li class="nav-item ">
+            <a class="nav-link" href="<%= aims_path %>">Все задания<span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="<%= categories_path %>">Категории</a>
+          </li>
+        </ul>
+        <% if user_signed_in? %>
+            <%= link_to 'Настройки', edit_user_registration_path, class: 'btn btn-outline-info user-enter btn-sm' %>
+            <%= link_to 'Выйти', destroy_user_session_path, method: :delete, class: 'btn btn-outline-info user-enter btn-sm' %>
+        <% else %>
+            <%= link_to 'Войти', new_user_session_path, class: 'btn btn-outline-info user-enter btn-sm' %>
+            <%= link_to 'Регистрация', new_user_registration_path, class: 'btn btn-info user-enter btn-sm' %>
+        <% end %>
+      </div>
+    </nav>
+  </div>
+  <div class="container">
+    <% unless flash.empty? %>
+        <div class="flash">
+          <div class="">
+            <% flash.each do |name,message| %>
+                <div class="alert <%= bootstrap_class_for(name) %>">
+                  <button class="close" data-dismiss = "alert">&times;</button>
+                  <%= message %>
+                </div>
+            <% end %>
+          </div>
+        </div>
+    <% end %>
+  </div>
+  <div class="container">
+    <div class="col-md-8 left_side">
+      <%= yield %>
+    </div>
+    <div class="col-md-4 right_side wrap">
+      <%= render 'auxiliary/submenu' %>
+    </div>
+  </div>
+</body>
+</html>

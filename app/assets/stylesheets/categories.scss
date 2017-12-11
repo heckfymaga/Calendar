@@ -1,0 +1,30 @@
+// Place all the styles related to the categories controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+.table{
+  .category_name{
+    font-family: 'Lato', sans-serif;
+  }
+  .trash{
+    margin-right: 1em;
+    float: right;
+    i{
+      color: #ff6d56;
+      transition: all .4s ease-in-out;
+      &:hover{
+        color: red;
+      }
+    }
+  }
+  .change{
+    margin-right: 1em;
+    float: right;
+    i{
+      color: dodgerblue;
+      transition: all .4s ease-in-out;
+      &:hover{
+        color: blue;
+      }
+    }
+  }
+}

@@ -1,0 +1,32 @@
+<div class="wrap">
+  <section>
+    <table class="table">
+      <thead>
+      <tr>
+        <th>Категория</th>
+        <th></th>
+      </tr>
+      </thead>
+      <tbody>
+      <% @categories.each do |category|  %>
+          <tr>
+            <td class="category_name"><%= category.name %></td>
+            <td>
+              <div class="trash">
+                <%= link_to category_path(category), method: :delete, data: { confirm: 'Вы уверены ?' } do %>
+                    <i class="fa fa-trash"></i>
+                <% end %>
+              </div>
+              <div class="change">
+                <%= link_to edit_category_path(category) do %>
+                    <i class="fa fa-pencil" aria-hidden="true"></i>
+                <% end %>
+              </div>
+            </td>
+          </tr>
+      <% end %>
+      </tbody>
+    </table>
+  </section>
+  <%= render 'form' %>
+</div>

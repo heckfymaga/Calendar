@@ -1,0 +1,23 @@
+<div class="wrap">
+    <% if @tasks.present? %>
+        <% @tasks.each do |task| %>
+          <div class="row">
+            <div class="frequently">
+              <i class="fa fa-clock-o" aria-hidden="true"></i>
+              <%= get_frequently(task) %>
+            </div>
+            <div class="show-task">
+              <%= task['target'] %>
+            </div>
+            <div class="created_at">
+              <i class="fa fa-calendar" aria-hidden="true"></i>
+              <%= link_to task['created_at'].strftime("%d %B, %Y"), day_tasks_path(task['date']) %>
+            </div>
+          </div>
+        <% end %>
+    <% else %>
+    <div class="tasks_blank">
+      Заданий нет
+    </div>
+    <% end %>
+</div>

@@ -1,0 +1,14 @@
+<div class="wrap">
+  <div class="tasks">
+      <% Task.today_tasks(@date).each do |task| %>
+          <div class="complete"><%= link_to 'выполнить', complete_day_path(task['id'], @date), method: :patch %></div>
+          <% if ActiveTask.where(task_id: task['id'], date: @date).exists? %>
+              <p class="task" style="opacity: 0.4;"><strike><%= task['target'] %></strike></p>
+          <% else %>
+              <p class="task"><%= task['target'] %></p>
+          <% end %>
+          <div class="trash"><%= link_to 'удалить', day_task_path(task['id'], @date), method: :delete %></div>
+      <% end %>
+  </div>
+  <div class="form"><%= render 'tasks/form' %></div>
+</div>
