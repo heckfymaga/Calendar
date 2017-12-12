@@ -5,3 +5,6 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+["Не повоторять", "Каждый день", "Каждую неделю", "Каждый месяц", "Каждый год"].each do |f|
+  TaskFrequency.create(frequency: f)
+end
