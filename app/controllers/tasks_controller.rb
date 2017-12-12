@@ -2,7 +2,7 @@ class TasksController < ApplicationController
   before_action :authenticate_user!
   def index
     @date = params[:day_id].to_date
-    @tasks = Task.all
+    @tasks = Task.today_tasks(current_user, @date)
   end
   def new
     @task = Task.new
