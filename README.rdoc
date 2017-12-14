@@ -1,27 +1,23 @@
 == README
+Web-приложение "Календарь событий", имеет следующие функции:
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+* Пользователи могут зарегистрироваться, указав email и пароль (обязательно);
 
-Things you may want to cover:
+* Зарегистрированный пользователь может изменить свой email, пароль;
 
-* Ruby version
+* Зарегистрированный пользователь может просмотреть список всех своих событий в календаре;
 
-* System dependencies
+* Зарегистрированный пользователь может просмотреть список всех событий в определенный день;
 
-* Configuration
+* Зарегистрированный пользователь может создать событие, при переходе по ссылке пользователь видит форму для создания нового события;
 
-* Database creation
+* События имеют название (обязательно) и дату (обязательно);
 
-* Database initialization
+* Событие может быть повторяющимся каждый день, каждую неделю, каждый месяц, каждый год;
 
-* How to run the test suite
+* Зарегистрированный пользователь может отметить любое событие в календаре как сделанное;
 
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+* Зарегистрированный пользователь может создавать категории для событий;
 
 
 Please feel free to use a different markup language if you do not plan to run
